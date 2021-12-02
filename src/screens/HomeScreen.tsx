@@ -3,6 +3,7 @@ import Carousel from 'react-native-snap-carousel';
 import React from 'react';
 import {
   ActivityIndicator,
+  Button,
   Dimensions,
   ScrollView,
   Text,
@@ -13,13 +14,16 @@ import {MoviePoster} from '../components/MoviePoster';
 import {useMovies} from '../hooks/useMovies';
 import {FlatList} from 'react-native-gesture-handler';
 import {HorizontalSlider} from '../components/HorizontalSlider';
+import { useNavigation } from '@react-navigation/core';
 
 const {width: windowWidth} = Dimensions.get('window');
+
 
 export const HomeScreen = () => {
   const {nowPlaying, popular, topRated ,upComing, isLoading} = useMovies();
   const {top} = useSafeAreaInsets();
   //console.log(peliculasEnCine[0]?.title);
+  const Navigation = useNavigation();
   //Grafico de carga
   if (isLoading) {
     return (

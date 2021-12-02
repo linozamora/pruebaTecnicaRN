@@ -3,9 +3,6 @@ import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Movie} from '../interfaces/movieInterfaces';
-import { DetailScreen } from '../screens/DetailScreen';
-import { Navigation } from '../navigation/Navigation';
-
 
 interface Props {
   movie: Movie;
@@ -14,20 +11,21 @@ interface Props {
 }
 
 export const MoviePoster = ({movie, height = 350, width = 300}: Props) => {
-  
-    const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+  const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   //console.log(movie.poster_path)
-  
-  const navigation = useNavigation();
+
+  const Navigation = useNavigation();
 
   return (
     <TouchableOpacity
-      onPress={ () => navigation.navigate('DetailScreen', movie)}
+      onPress={() => Navigation.navigate('DetailScreen', movie)}
       activeOpacity={0.8}
       style={{
         width,
         height,
-        marginHorizontal: 8,
+        marginHorizontal: 2,
+        paddingBottom: 20,
+        paddingHorizontal: 7,
         //backgroundColor: 'red'
       }}>
       <View style={styles.ImageContainer}>
@@ -51,9 +49,9 @@ const styles = StyleSheet.create({
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.24,
-    shadowRadius: 7,
-    elevation: 10,
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+    elevation: 20,
   },
   filmTitle: {
     fontSize: 12,

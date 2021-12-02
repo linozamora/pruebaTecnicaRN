@@ -11,7 +11,6 @@ export type RootStackParams = {
   DetailScreen: Movie;
 }
 
-
 const Stack = createStackNavigator();
 
 export const Navigation = () =>  {
@@ -19,9 +18,6 @@ export const Navigation = () =>  {
     <Stack.Navigator
     screenOptions={{
         headerShown: false,
-        cardStyle: {
-          backgroundColor: 'white'
-        }
       }}
     >
       <Stack.Screen name="HomeScreen" component={ HomeScreen } />
