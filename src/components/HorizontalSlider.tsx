@@ -1,5 +1,6 @@
 import React from 'react';
-import {FlatList, Text, View} from 'react-native';
+import {FlatList, StyleSheet, Text, useColorScheme, View} from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 import {Movie} from '../interfaces/movieInterfaces';
 import {MoviePoster} from './MoviePoster';
 
@@ -9,6 +10,7 @@ interface Props {
 }
 
 export const HorizontalSlider = ({title, movies}: Props) => {
+  const isDarkMode = useColorScheme() === 'dark';
   return (
     <View
       style={{
@@ -16,12 +18,16 @@ export const HorizontalSlider = ({title, movies}: Props) => {
       }}>
       {title && (
         <Text
-          style={{
-            fontSize: 15,
+          style={[styles.textMovies,
+            {
+              color: isDarkMode ? Colors.white : Colors.black,
+            },
+            /*fontSize: 15,
             fontWeight: 'bold',
             marginLeft: 10,
             color: 'black',
-          }}>
+            */
+          ]}>
           {title}
         </Text>
       )}
@@ -37,3 +43,13 @@ export const HorizontalSlider = ({title, movies}: Props) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  textMovies: {
+    fontSize: 15,
+    marginLeft: 10,
+    fontWeight: 'bold',
+    marginVertical: 10
+    //color: 'black',
+  }
+})

@@ -7,19 +7,26 @@ import {
   Dimensions,
   ScrollView,
   Text,
+  useColorScheme,
   View,
 } from 'react-native';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
 import {MoviePoster} from '../components/MoviePoster';
 import {useMovies} from '../hooks/useMovies';
 import {FlatList} from 'react-native-gesture-handler';
 import {HorizontalSlider} from '../components/HorizontalSlider';
 import { useNavigation } from '@react-navigation/core';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+
 
 const {width: windowWidth} = Dimensions.get('window');
 
 
 export const HomeScreen = () => {
+  const isDarkMode = useColorScheme() === 'dark';
+  const backgroundStyle = {
+    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  };
   const {nowPlaying, popular, topRated ,upComing, isLoading} = useMovies();
   const {top} = useSafeAreaInsets();
   //console.log(peliculasEnCine[0]?.title);
@@ -33,7 +40,10 @@ export const HomeScreen = () => {
     );
   }
   return (
-    <ScrollView>
+    <SafeAreaView style={backgroundStyle}> 
+      <ScrollView
+      contentInsetAdjustmentBehavior="automatic"
+      style={backgroundStyle}>
       <View style={{marginTop: top + 20}}>
         {/*Carousel principal*/}
         <View style={{height: 390}}>
@@ -49,14 +59,15 @@ export const HomeScreen = () => {
         </View>
         {/*Carousel secundario - Peliculas populares*/}
         <HorizontalSlider
-          title="RECOMENDED FOR YOU"
+          title="RECOMENDADAS PARA TI"
           movies={popular}
         />
         <HorizontalSlider
-          title="TOP RATED"
+          title="MEJOR CALIFICADAS"
           movies={topRated}
         />
       </View>
     </ScrollView>
+    </SafeAreaView>
   );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, useColorScheme, View} from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 import {Cast} from '../interfaces/creditsInterface';
 
 interface Props {
@@ -8,7 +9,7 @@ interface Props {
 
 export const CastItem = ({actor}: Props) => {
   const uri = `https://image.tmdb.org/t/p/w500${actor.profile_path}`;
-
+  const isDarkMode = useColorScheme() === 'dark';
   return (
     <View>
       {actor.profile_path && (
@@ -16,7 +17,12 @@ export const CastItem = ({actor}: Props) => {
       )}
 
       <View>
-        <Text style={styles.castText}>{actor.name}</Text>
+        <Text style={[styles.castText,
+        {
+          color: isDarkMode ? Colors.white : Colors.black,
+        },
+      ]}
+        >{actor.name}</Text>
       </View>
     </View>
   );
@@ -36,7 +42,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontFamily: 'Open Sans',
     //fontWeight: 'bold',
-    color: 'black',
+    //color: 'black',
     width: 60,
     height: 60,
   },

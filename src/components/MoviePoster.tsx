@@ -1,7 +1,8 @@
 import {useNavigation} from '@react-navigation/core';
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, useColorScheme, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 import {Movie} from '../interfaces/movieInterfaces';
 
 interface Props {
@@ -15,6 +16,7 @@ export const MoviePoster = ({movie, height = 350, width = 300}: Props) => {
   //console.log(movie.poster_path)
 
   const Navigation = useNavigation();
+  const isDarkMode = useColorScheme() === 'dark';
 
   return (
     <TouchableOpacity
@@ -31,7 +33,9 @@ export const MoviePoster = ({movie, height = 350, width = 300}: Props) => {
       <View style={styles.ImageContainer}>
         <Image source={{uri}} style={styles.image} />
       </View>
-      <Text style={styles.filmTitle}>{movie.title}</Text>
+      <Text style={[styles.filmTitle, {
+            color: isDarkMode ? Colors.white : Colors.black,
+          },]}>{movie.title}</Text>
     </TouchableOpacity>
   );
 };
@@ -55,7 +59,7 @@ const styles = StyleSheet.create({
   },
   filmTitle: {
     fontSize: 12,
-    color: 'black',
+    //color: 'black',
     fontWeight: 'bold',
     //textAlign: 'center'
   },
