@@ -14,7 +14,7 @@ export const HorizontalSlider = ({title, movies}: Props) => {
   return (
     <View
       style={{
-        height: title ? 220 : 180,
+        height: title ? 220 : 200,
       }}>
       {title && (
         <Text
@@ -39,6 +39,7 @@ export const HorizontalSlider = ({title, movies}: Props) => {
         keyExtractor={item => item.id.toString()}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
+        
       />
     </View>
   );

@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@nghinv/react-native-search-bar": "^0.2.0",
     "@react-native-masked-view/masked-view": "^0.2.6",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
@@ -21,9 +22,11 @@
     "react-native": "0.66.3",
     "react-native-elements": "^3.4.2",
     "react-native-gesture-handler": "^1.10.3",
+    "react-native-platform-searchbar": "^1.1.2",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.9.0",
     "react-native-snap-carousel": "^3.9.1",
+    "react-native-svg": "^12.1.1",
     "react-native-vector-icons": "^9.0.0",
     "react-navigation": "^4.4.4"
   },
