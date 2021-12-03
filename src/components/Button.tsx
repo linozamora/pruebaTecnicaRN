@@ -6,13 +6,13 @@ export const Button = () => {
     return (
         <TouchableOpacity style = {{
             ...styles.button,
-            backgroundColor: '#707070'
+            backgroundColor: '#707070',
         }}>
             <Text style = {{
                 ...styles.buttonText,
                 color: '#f1f1f1',
             }}
-            >WATCH NOW</Text>
+            >VER AHORA</Text>
         </TouchableOpacity>
     )
 }

@@ -22,13 +22,13 @@ export const MovieDetails = ({movieFull, cast}: Props) => {
         <>
         {/*Detalles*/}
             <View style={{marginHorizontal: 20}}>
-            <View style={{flexDirection: 'row'}}>
+            <View style={{flexDirection: 'row', marginLeft: '85%'}}>
             <Icon
-                    name="star-outline"
-                    color="grey"
+                    name="star"
+                    color="gold"
                     size={16}
                 />
-                <Text style={{color: 'grey'}}> {movieFull.vote_average}</Text>
+                <Text style={{color: 'gold'}}> {movieFull.vote_average}</Text>
             </View>
             <Button />
             <View style={{marginHorizontal: 15, marginTop: 20}}>
