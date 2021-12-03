@@ -1,0 +1,16 @@
+all: build
+VERSION = 1.1
+
+
+build:
+  docker build --tag linozamora/reactnativepeliculas:${VERSION} .
+
+
+push: build
+  docker push linozamora/reactnativepeliculas:${VERSION}
+  git tag react-native-android/${VERSION} HEAD
+  git push --tags
+
+
+run: build
+  docker run --rm -ti linozamora/reactnativepeliculas:${VERSION}
